@@ -1,0 +1,8 @@
+#!/bin/bash
+# test
+
+
+
+iverilog *.v
+vvp * -lxt2
+
