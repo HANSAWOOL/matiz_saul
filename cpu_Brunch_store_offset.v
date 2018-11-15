@@ -32,7 +32,7 @@ module cpu_Branch_store_offset(
 	wire [11:0] store_imm_merge;
 	wire [19:0] jump_imm_merge;
 
-	assign branch_imm_merge = {instruction[31],instruction[7],instruction[20:25],instruction[11:8]} ;
+	assign branch_imm_merge = {instruction[31],instruction[7],instruction[25:20],instruction[11:8]} ;
 	assign store_imm_merge = {instruction[31:25],instruction[11:7]} ;
 	assign jump_imm_merge = {instruction[31],instruction[19:12],instruction[20],instruction[30:21]} ;
 
@@ -46,13 +46,12 @@ module cpu_Branch_store_offset(
 		end 
 		
 		else if (jump_offset) begin 
-		offset < = {jump_imm_merge,20'b0000000000_00} ;
+		offset <= {jump_imm_merge,12'b000000000000} ;
 		end 
 		
 		else begin 
 		offset <=0;
 		end 
 	end 
-
 
 endmodule

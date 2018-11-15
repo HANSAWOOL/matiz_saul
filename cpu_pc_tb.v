@@ -26,13 +26,14 @@ module cpu_pc_tb;
 
 	// Inputs
 	reg clk;
-	reg offset;
+	reg [31:0] offset;
 	reg reset;
 	reg interrupt;
 	reg branch;
 	reg zero; 
 	reg jal;
 	reg jalr;
+        reg [31:0]  result_from_alu;
 
 	// Outputs
 	wire [31:0] pc;
@@ -50,7 +51,8 @@ module cpu_pc_tb;
 		.zero(zero),
 		.jal(jal),
 		.jalr(jalr),
-		
+		.result_from_alu(result_from_alu),
+
 		.pc(pc),
 		.interrupt_grant(interrupt_grant)
 	);
@@ -65,7 +67,7 @@ module cpu_pc_tb;
 		jal = 0;
 		jalr =  0;
 		interrupt = 0;
-		
+		result_from_alu=0;
 
 		// Wait 100 ns for global reset to finish
 		#100;
@@ -79,6 +81,9 @@ module cpu_pc_tb;
 		#485;
 		
 		interrupt = 0 ;
+
+
+	
 		
 		// Add stimulus here
 

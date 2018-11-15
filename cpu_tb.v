@@ -226,12 +226,17 @@ module cpu_tb;
 		inputdata_from_external_bus = 32'b0000000_00010_00001_111_00000_0010011;	//AND
 		
 		
-
-		
-
-
-		
 	end
+		initial begin
+	$dumpvars(0);
+#100000ns;
+$finish;
+end
+
+
+
+		
+
       
 endmodule
 
